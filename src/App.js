@@ -14,16 +14,11 @@ function App() {
     <Router>
       <Navigation/>
       <Route path="/" exact component={Home}/>
-      <Route path="/login" component={Login}/>
+      <Route path="/login" exact component={Login}/>
      <Route path="/registrar" exact component={Panel} />
      <Route path="/Mall1" exact component={Show} />
     </Router>
   );
 }
-export const backend = {
-  host: "http://localhost",
-  port: 8080
-}
-
 
 export default App;

@@ -27,7 +27,7 @@ iniciarSesion=async()=>{
         alert("Llene todos los campos");
     } else{
     try {
-        const res = await axios.post('http://entrycheckers.herokuapp.com/login',{user:this.state.form.username})
+        const res = await axios.post('https://entrycheckers.herokuapp.com/login',{user:this.state.form.username})
         if (res.data.length>0){
             if(res.data[0].password===this.state.form.password){
             alert(`Bienvenido ${this.state.form.username}`);

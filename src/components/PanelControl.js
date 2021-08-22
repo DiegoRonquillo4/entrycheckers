@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from "axios"
-import {backend} from '../App'
 import Cookies from 'universal-cookie';
 import Accordion from 'react-bootstrap/Accordion'
 const cookies = new Cookies();
@@ -106,10 +105,7 @@ export default class PanelControl extends Component {
             alert('Ingrese una contraseña de entre 4 y 12 caracteres');
             }else{   
                 try {
-                    const res = await axios.post("http://entrycheckers.herokuapp.com" + '/login/admin',{
-                    user:this.state.usuario,
-                    password:this.state.contraseña
-                    });
+                    const res = await axios.post('http://entrycheckers.herokuapp.com/login/admin',{ ser:this.state.usuario,password:this.state.contraseña});
                 console.log(res);
                 alert("Administrador Registrado");
                 } catch (error) {
@@ -125,9 +121,7 @@ export default class PanelControl extends Component {
     onSubmitEdificio = async (e)=>{
         e.preventDefault();
         try {
-            const res = await axios.post("http://entrycheckers.herokuapp.com"+ '/edificio',{
-            nombre:this.state.nombre_edificio
-            });
+            const res = await axios.post('http://entrycheckers.herokuapp.com/edificio',{nombre:this.state.nombre_edificio});
         console.log(res);
         alert("Edificio Registrado");
         } catch (error) {
@@ -141,7 +135,7 @@ export default class PanelControl extends Component {
         e.preventDefault();
         if(!(this.state.id==="")){
         try {
-            const res = await axios.delete("http://entrycheckers.herokuapp.com" + '/Mall1/'+ this.state.id );
+            const res = await axios.delete('http://entrycheckers.herokuapp.com/Mall1/'+ this.state.id );
         console.log(res);
         alert("Registro Eliminado");
         } catch (error) {
@@ -158,7 +152,7 @@ export default class PanelControl extends Component {
         e.preventDefault();
     if(!(this.state.id_edificio==="")){
         try {
-            const res = await axios.delete("http://entrycheckers.herokuapp.com" + '/edificio/'+ this.state.id_edificio );
+            const res = await axios.delete('http://entrycheckers.herokuapp.com/edificio/'+ this.state.id_edificio );
         console.log(res);
         alert("Edificio Eliminado");
         } catch (error) {

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from "axios"
-import {backend} from '../App'
 import './Login.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Cookies from 'universal-cookie';
@@ -28,9 +27,7 @@ iniciarSesion=async()=>{
         alert("Llene todos los campos");
     } else{
     try {
-        const res = await axios.post("http://entrycheckers.herokuapp.com" + '/login',{
-            user:this.state.form.username, 
-        })
+        const res = await axios.post('http://entrycheckers.herokuapp.com/login',{user:this.state.form.username})
         if (res.data.length>0){
             if(res.data[0].password===this.state.form.password){
             alert(`Bienvenido ${this.state.form.username}`);

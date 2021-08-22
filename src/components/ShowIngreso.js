@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from "axios"
-import {backend} from '../App'
 import './ShowIngreso.css';
 import Cookies from 'universal-cookie';
 import Table from 'react-bootstrap/Table'
@@ -54,12 +53,12 @@ export default class ShowIngreso extends Component {
     }
     //Función reiniciar para reestablecer la tabla a forma inicial
     reiniciar = async (e)=>{
-        const res = await axios.get("http://entrycheckers.herokuapp.com" + '/Mall1');
+        const res = await axios.get('http://entrycheckers.herokuapp.com/Mall1');
         this.setState({ingresos:res.data});
     }
    //Función filtrar para mostrar en la tabla solo los datos del edificio deseado 
     filtrar = async (e)=>{
-        const res = await axios.get("http://entrycheckers.herokuapp.com" + '/edificio/'+ e.target.getAttribute('id') );
+        const res = await axios.get('http://entrycheckers.herokuapp.com/edificio/'+ e.target.getAttribute('id') );
         this.setState({ingresos:res.data});
     }
     //Estados necesarios
@@ -69,12 +68,12 @@ export default class ShowIngreso extends Component {
     }
     //Función para tomar todos los registros de la base de datos de la tabla ingresos
     async getIngresos() {
-        const res = await axios.get("http://entrycheckers.herokuapp.com" + '/Mall1');
+        const res = await axios.get('http://entrycheckers.herokuapp.com/Mall1');
         this.setState({ingresos:res.data});
     }
     //Función para tomar todos los registros de la base de datos de la tabla edificio
     async getEdificios() {
-        const res = await axios.get("http://entrycheckers.herokuapp.com" + '/edificio');
+        const res = await axios.get('http://entrycheckers.herokuapp.com/edificio');
         this.setState({edificios:res.data});
     }
 }
